@@ -41,7 +41,7 @@
         org = "pythoneda-iac";
         repo = "shared";
         version = "0.0.1";
-        sha256 = "0md1xwhm3mw43n9lhsbn49rnzyyifh5ph3dbvarxkhxq08zc0caj";
+        sha256 = "1qbbxacyvc0hz3ksh7w49snw9crbdz2069x23bpqxh259f2s5ahi";
         pname = "${org}-${repo}";
         pythonpackage = "pythoneda.iac";
         package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
