@@ -21,6 +21,15 @@
   inputs = rec {
     nixos.url = "github:NixOS/nixpkgs/24.05";
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
+    pythoneda-shared-iac-events = {
+      inputs.nixos.follows = "nixos";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.pythoneda-shared-pythonlang-banner.follows =
+        "pythoneda-shared-pythonlang-banner";
+      inputs.pythoneda-shared-pythonlang-domain.follows =
+        "pythoneda-shared-pythonlang-domain";
+      url = "github:pythoneda-shared-iac-def/events/0.0.7";
+    };
     pythoneda-shared-pythonlang-banner = {
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
@@ -31,7 +40,7 @@
       inputs.nixos.follows = "nixos";
       inputs.pythoneda-shared-pythonlang-banner.follows =
         "pythoneda-shared-pythonlang-banner";
-      url = "github:pythoneda-shared-pythonlang-def/domain/0.0.88";
+      url = "github:pythoneda-shared-pythonlang-def/domain/0.0.89";
     };
   };
   outputs = inputs:
@@ -58,6 +67,7 @@
           builtins.replaceStrings [ "\n" ] [ "" ] "nixos-${nixosVersion}";
         shared = import "${pythoneda-shared-pythonlang-banner}/nix/shared.nix";
         pythoneda-shared-iac-shared-for = { python
+          , pythoneda-shared-iac-events
           , pythoneda-shared-pythonlang-banner
           , pythoneda-shared-pythonlang-domain}:
           let
@@ -80,6 +90,8 @@
               inherit homepage pname pythonMajorMinorVersion pythonpackage
                 version;
               package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
+              pythonedaSharedIacEvents =
+                pythoneda-shared-iac-events.version;
               pythonedaSharedPythonlangBanner =
                 pythoneda-shared-pythonlang-banner.version;
               pythonedaSharedPythonlangDomain =
@@ -97,6 +109,7 @@
 
             nativeBuildInputs = [ python.pkgs.pip python.pkgs.poetry-core pkgs.docker ];
             propagatedBuildInputs = with python.pkgs; [
+              pythoneda-shared-iac-events
               pythoneda-shared-pythonlang-domain
             ];
 
@@ -210,6 +223,7 @@
           pythoneda-shared-iac-shared-python38 =
             pythoneda-pythoneda-shared-iac-shared-for {
               python = pkgs.python38;
+              pythoneda-shared-iac-events = pythoneda-shared-iac-events.packages.${system}.pythoneda-shared-iac-events-python38;
               pythoneda-shared-pythonlang-banner =
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38;
               pythoneda-shared-pythonlang-domain =
@@ -218,6 +232,7 @@
           pythoneda-shared-iac-shared-python39 =
             pythoneda-shared-iac-shared-for {
               python = pkgs.python39;
+              pythoneda-shared-iac-events = pythoneda-shared-iac-events.packages.${system}.pythoneda-shared-iac-events-python39;
               pythoneda-shared-pythonlang-banner =
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python39;
               pythoneda-shared-pythonlang-domain =
@@ -226,6 +241,7 @@
           pythoneda-shared-iac-shared-python310 =
             pythoneda-shared-iac-shared-for {
               python = pkgs.python310;
+              pythoneda-shared-iac-events = pythoneda-shared-iac-events.packages.${system}.pythoneda-shared-iac-events-python310;
               pythoneda-shared-pythonlang-banner =
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python310;
               pythoneda-shared-pythonlang-domain =
@@ -234,6 +250,7 @@
           pythoneda-shared-iac-shared-python311 =
             pythoneda-shared-iac-shared-for {
               python = pkgs.python311;
+              pythoneda-shared-iac-events = pythoneda-shared-iac-events.packages.${system}.pythoneda-shared-iac-events-python311;
               pythoneda-shared-pythonlang-banner =
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python311;
               pythoneda-shared-pythonlang-domain =
@@ -242,6 +259,7 @@
           pythoneda-shared-iac-shared-python312 =
             pythoneda-shared-iac-shared-for {
               python = pkgs.python312;
+              pythoneda-shared-iac-events = pythoneda-shared-iac-events.packages.${system}.pythoneda-shared-iac-events-python312;
               pythoneda-shared-pythonlang-banner =
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python312;
               pythoneda-shared-pythonlang-domain =
