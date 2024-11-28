@@ -1,8 +1,8 @@
 # templates/pyprojecttoml.template
 #
-# This file is the template for pythoneda-iac's shared kernel
+# This file is the template for pythoneda-shared-iac/shared.
 #
-# Copyright (C) 2024-today pythoneda IaC
+# Copyright (C) 2024-today pythoneda-shared-iac/shared
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
