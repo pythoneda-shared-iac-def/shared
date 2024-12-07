@@ -50,7 +50,7 @@
         org = "pythoneda-shared-iac";
         repo = "shared";
         version = "0.0.8";
-        sha256 = "0fi34v6yvqarqq6avpq6bqqc9klgmdpsxh8di45z937r5klbmp6s";
+        sha256 = "0kxcjj2fw6bimbd4ghrg94x5nnr1qcy29z53m3hyx5b5b5bfpqpa";
         pname = "${org}-${repo}";
         pythonpackage = "pythoneda.shared.iac";
         package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
