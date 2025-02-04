@@ -28,7 +28,7 @@
         "pythoneda-shared-pythonlang-banner";
       inputs.pythoneda-shared-pythonlang-domain.follows =
         "pythoneda-shared-pythonlang-domain";
-      url = "github:pythoneda-shared-iac-def/events/0.0.30";
+      url = "github:pythoneda-shared-iac-def/events/0.0.31";
     };
     pythoneda-shared-pythonlang-banner = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,7 +40,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.pythoneda-shared-pythonlang-banner.follows =
         "pythoneda-shared-pythonlang-banner";
-      url = "github:pythoneda-shared-pythonlang-def/domain/0.0.126";
+      url = "github:pythoneda-shared-pythonlang-def/domain/0.0.128";
     };
   };
   outputs = inputs:
